@@ -68,57 +68,24 @@ public class Game extends View implements SensorEventListener {
     }
 
     public void update() {
-        if (!checkSelfCollision()) {
-            checkDirectionChange();
-            snake.move();
-            checkFoodCollision();
-        } else {
+        checkDirectionChange();
+        if (!snake.move()) {
             sm.unregisterListener(this);
-            GameActivity.getUpdateThread().setIsRunning(false);
+            GameActivity.getUpdateThread().interrupt();
         }
-        System.out.println(Resources.getSystem().getDisplayMetrics().heightPixels);
-    }
-
-    private void checkFoodCollision() {
-        Snake.SnakePart head = snake.getHead();
-        if (food.getX() == head.x && food.getY() == head.y) {
-            score ++;
-            GameActivity.getUpdateThread().setGamespeed(GameActivity.getUpdateThread().getGamespeed() - 10);
-            spawnFood();
-            snake.getSnake().add(0, snake.getSnake().get(0));
-        }
+        snake.checkFoodCollision(food);
     }
 
     private void spawnFood() {
         food = new Food(50, 50);
     }
 
-    private boolean checkSelfCollision() {
-        // Kontrola či sa súradnice hlavy hada zhodujú s nejakou časťou jeho tela
-        Snake.SnakePart head = snake.getHead();
-
-        for(int i=0; i<snake.getSnake().size()-2; i++) {
-            Snake.SnakePart part = snake.getSnake().get(i);
-            if (head.x == part.x && head.y == part.y) {
-                return true;
-            }
-        }
-
-        // Ak nie je povolené prechádzanie cez okraje, kontrolujeme aj náraz do steny
-        if (!GameActivity.getOkraje()) {
-            if (head.x < 0 || head.x >= screen.x || head.y < 0 || head.y >= screen.y) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     private void checkDirectionChange() {
         float x = lastEvent.values[0];
         float y = lastEvent.values[1];
 
-        // Zmena smeru hada podľa naklonenia CLASSIC (4 smery)
+        // Changing the snakes direction based on tilting the phone
+        // CLASSIC GameMode (4 directions)
         if (GameActivity.getGamemode().equals("classic")) {
             if (Math.abs(x) > Math.abs(y)) {
                 if (x > 1 && snake.getDirection() != 1) snake.setDirection(3);
@@ -128,7 +95,9 @@ public class Game extends View implements SensorEventListener {
                 else if (y < -1 && snake.getDirection() != 2) snake.setDirection(4);
             }
         }
-        // Zmena smeru hada podľa naklonenia MODERN (8 smerov)
+
+        // Changing the snakes direction based on tilting the phone
+        // MODERN GameMode (8 directions)
         else {
             if (x > 1) {
                 if (y < -1 && snake.getDirection() != 6) snake.setDirection(8);
@@ -145,6 +114,9 @@ public class Game extends View implements SensorEventListener {
         }
     }
 
+    // When the phone is tilted, save the event values for later.
+    // We don't need to change the snake's direction every time the phone is tilted,
+    // only when the game is about to update.
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
