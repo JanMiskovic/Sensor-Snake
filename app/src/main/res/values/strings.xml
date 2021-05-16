@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Snake</string>
+    <string name="app_name">Sensor Snake 🐍</string>
+    <string name="sensor">Sensor 🐍</string>
+    <string name="snake">Snake</string>
+    <string name="classic_button">Classic mode</string>
+    <string name="modern_button">Modern mode</string>
+    <string name="edge_checkbox">Passing through edges</string>
 </resources>

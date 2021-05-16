@@ -1,13 +1,14 @@
-package sk.ukf.snake;
+package sk.ukf.snake.activities;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import sk.ukf.snake.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,11 +20,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         okrajeCheckBox = findViewById(R.id.okrajeCheckBox);
 
-        sensorTextView = findViewById(R.id.textView2);
+        sensorTextView = findViewById(R.id.titleTextView);
         sensorTextView.setOnClickListener(v -> {
             pocetS = Math.min(pocetS + 1, 3);
             sensorTextView.setText(new String(new char[pocetS]).replace("\0", "S") + "ENSOR 🐍");

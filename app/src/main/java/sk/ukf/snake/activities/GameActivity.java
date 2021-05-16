@@ -1,4 +1,4 @@
-package sk.ukf.snake;
+package sk.ukf.snake.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.os.Handler;
 import android.os.Message;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import sk.ukf.snake.Game;
+import sk.ukf.snake.threads.UpdateThread;
 
 public class GameActivity extends AppCompatActivity {
 

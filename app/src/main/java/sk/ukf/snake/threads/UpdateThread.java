@@ -1,4 +1,4 @@
-package sk.ukf.snake;
+package sk.ukf.snake.threads;
 
 import android.os.Handler;
 

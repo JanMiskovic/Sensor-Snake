@@ -1,85 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".activities.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <TextView
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258">
+        android:layout_marginBottom="-35sp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/sensor"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="36sp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_bold"
-            android:text="SENSOR 🐍"
-            android:textColor="?attr/colorOnSecondary"
-            android:textSize="36sp" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-40dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="SNAKE"
-            android:textColor="?attr/colorOnSecondary"
-            android:textSize="80sp" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/titleTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/snake"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorOnSecondary"
+        android:textSize="80sp" />
 
     <Button
-        android:id="@+id/classicButton"
-        android:layout_width="150dp"
+        android:id="@+id/playClassicButton"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins"
         android:onClick="classicButton"
-        android:text="Classic"
+        android:text="@string/classic_button"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/modernButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        android:textStyle="bold" />
 
     <Button
-        android:id="@+id/modernButton"
-        android:layout_width="150dp"
+        android:id="@+id/playModernButton"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/poppins"
         android:onClick="modernButton"
-        android:text="Modern"
+        android:text="@string/modern_button"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.41" />
+        android:textStyle="bold" />
 
     <CheckBox
         android:id="@+id/okrajeCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="Prechádzanie cez okraje"
-        android:textColor="?attr/colorOnPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.801" />
+        android:fontFamily="@font/poppins"
+        android:text="@string/edge_checkbox"
+        android:textColor="?attr/colorOnPrimary" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

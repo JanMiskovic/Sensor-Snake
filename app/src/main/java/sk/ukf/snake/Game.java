@@ -1,7 +1,6 @@
 package sk.ukf.snake;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -17,6 +16,8 @@ import android.view.View;
 import android.view.WindowManager;
 
 import java.util.HashMap;
+
+import sk.ukf.snake.activities.GameActivity;
 
 public class Game extends View implements SensorEventListener {
 

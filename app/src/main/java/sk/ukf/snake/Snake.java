@@ -2,6 +2,8 @@ package sk.ukf.snake;
 
 import java.util.ArrayList;
 
+import sk.ukf.snake.activities.GameActivity;
+
 public class Snake {
 
     public static class SnakePart {
